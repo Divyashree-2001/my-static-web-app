@@ -469,7 +469,7 @@ input, textarea, select {
         const response = await fetch(`${endpoint}/${username}`);
         const data = await response.json();
         console.table(data.value);
-        if (data.success) {
+        if (response.ok) {
           window.location.href = '/display.html';
         } else {
           alert('Invalid username or password');
