@@ -465,14 +465,8 @@ input, textarea, select {
       const password = document.getElementById('password').value;
 
       try {
-        const response = await fetch('/data-api/rest/User', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ username, password })
-        });
-
+        const endpoint = `/data-api/rest/User/username`;
+        const response = await fetch(`${endpoint}/${username}`);
         const data = await response.json();
         if (data.success) {
           window.location.href = '/display.html';
