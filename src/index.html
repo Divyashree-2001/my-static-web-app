@@ -468,6 +468,7 @@ input, textarea, select {
         const endpoint = `/data-api/rest/User/username`;
         const response = await fetch(`${endpoint}/${username}`);
         const data = await response.json();
+        console.table(data.value);
         if (data.success) {
           window.location.href = '/display.html';
         } else {
