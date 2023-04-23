@@ -465,11 +465,16 @@ input, textarea, select {
       const password = document.getElementById('password').value;
 
       try {
-        const endpoint = `/data-api/rest/User/username`;
-        const response = await fetch(`${endpoint}/${username}`);
+        const response = await fetch('/data-api/rest/User', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        });
+
         const data = await response.json();
-        console.table(data.value);
-        if (data.isValid) {
+        if (data.success) {
           window.location.href = '/display.html';
         } else {
           alert('Invalid username or password');
