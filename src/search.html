@@ -478,46 +478,40 @@ input, textarea, select {
             <button type="button" onclick="search()">Search</button> 
         </form>
     </section>
+    
+    <script>
+    const form = document.getElementById('login-form');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+    
+      const username = document.getElementById('GSTIN').value;
+    
+      try {
+        const response = await fetch('/data-api/rest/User', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ GSTIN })
+        });
+    
+        const data = await response.json();
+        if (data.success) {
+          window.location.href = 'table.html';
+        } else {
+          alert('Invalid GSTIN');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('An error occurred while searching');
+      }
+    });
 
 <!--------------------------END OF search----------------------->
 
 
 <footer>
-    <div class="footer__socials">
-        <a href="https://www.youtube.com/@GoodsandServicesTaxNetwork"target="_blank"><i class="uil uil-youtube"></i></a>
-    <a href="https://facebook.com"target="_blank"><i class="uil uil-facebook"></i></a>
-    <a href="https://linkedin.com"target="_blank"><i class="uil uil-linkedin"></i></a>
-    <a href="https://twitter.com"target="_blank"><i class="uil uil-twitter"></i></a>
-    </div>
-    <div class="footer__container">
-        <article>
-            <h4>About GST</h4>
-            <ul>
-                <li><a href="">GST History</a></li>
-            </ul>
-        </article>
-        <article>
-            <h4>Contact Us</h4>
-            <ul>
-                <li><a href="">Help desk No.</a></li>
-                <li><a href="">Email</a></li>
-            </ul>
-        </article>
-        <article>
-            <h4>Related Sites</h4>
-            <ul>
-                <li><a href="">--------</a></li>
-            </ul>
-        </article>
-        <article>
-            <h4>Website policies</h4>
-            <ul>
-                <li><a href="">Policy</a></li>
-                <li><a href="">Terms and Conditions</a></li>
-                <li><a href="">Disclaimer</a></li>
-            </ul>
-        </article>
-    </div>
+    
 </footer>
 
 
