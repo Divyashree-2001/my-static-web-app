@@ -479,12 +479,7 @@ input, textarea, select {
   const response = await fetch(`${endpoint}/${id}`);
   const result = await response.json();
   console.table(result.value);
-  if (result.success) {
-          window.location.href = '/table.html';
-        } else {
-          alert('Invalid GSTIN no');
-        }
-}
+    }
     </script>
 <!--------------------------END OF search----------------------->
 
