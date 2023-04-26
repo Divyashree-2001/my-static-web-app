@@ -467,15 +467,14 @@ input, textarea, select {
             <button type="submit" class="btn" onclick="search()">Search</button> 
         </form>
     </section>
-    
     <script>
-    async function search() {
-  const id = document.getElementById('gstin').value;
-  const endpoint = `/data-api/rest/User/username`;
+  async function search() {
+        const id = document.getElementById('gstin').value;
+  const endpoint = '/data-api/rest/User/username';
   const response = await fetch(`${endpoint}/${id}`);
-  const result = await response.json();
-  console.table(result.value);
-    }
+  const data = await response.json();
+  console.table(data.value);
+}
     </script>
 <!--------------------------END OF search----------------------->
 
