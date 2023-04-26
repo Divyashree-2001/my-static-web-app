@@ -473,10 +473,10 @@ input, textarea, select {
     </section>
     
     <script>
-    async function get() {
-  const username = document.getElementById('gstin').value;
+    async function search() {
+  const id = document.getElementById('gstin').value;
   const endpoint = `/data-api/rest/User/username`;
-  const response = await fetch(`${endpoint}/${username}`);
+  const response = await fetch(`${endpoint}/${id}`);
   const result = await response.json();
   console.table(result.value);
   if (result.success) {
