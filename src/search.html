@@ -473,32 +473,18 @@ input, textarea, select {
     </section>
     
     <script>
-    const form = document.getElementById('login-form');
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-    
-      const username = document.getElementById('GSTIN').value;
-    
-      try {
-        const response = await fetch('/data-api/rest/User', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ GSTIN })
-        });
-    
-        const data = await response.json();
-        if (data.success) {
-          window.location.href = 'table.html';
+    async function get() {
+  const username = document.getElementById('gstin').value;
+  const endpoint = `/data-api/rest/User/username`;
+  const response = await fetch(`${endpoint}/${username}`);
+  const result = await response.json();
+  console.table(result.value);
+  if (result.success) {
+          window.location.href = '/table.html';
         } else {
-          alert('Invalid GSTIN');
+          alert('Invalid GSTIN no');
         }
-      } catch (error) {
-        console.error(error);
-        alert('An error occurred while searching');
-      }
-    });
+}
     </script>
 <!--------------------------END OF search----------------------->
 
