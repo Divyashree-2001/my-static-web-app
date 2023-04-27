@@ -467,13 +467,17 @@ input, textarea, select {
     </nav>
     <!--------------------------END OF NAV----------------------->
     <section class="search__bar">
-            <div class="container nav__container">
+        <form class="container search__bar-container">
+            <div>
                 <h4>Search by GSTIN</h4>
-                <input type="text" id="gstin" name="gstin">
-                <button id="get" onclick="get()">Get</button>
             </div>
+            <div>
+                <i class="uil uil-search"></i>
+                <input type="text" id="gstin" name="gstin">
+                <button type="submit" id="get" onclick="get()">Submit</button> 
+        </div>
+        </form>
     </section>
-    
 <!--------------------------END OF search----------------------->
 
 <script>
