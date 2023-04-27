@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GST TRACKING SYSTEM</title>
     <!-----CUSTOM STYLESHEET--->
-        <style>
+    <style>
         :root{
     --color-primary: #6cb4ee;
     --color-primary-light: hsl(242, 91%, 69, 18%);
@@ -54,6 +54,7 @@ body {
     background: var(--color-primary);
     font-size: 0.9rem;
 }
+
 .container {
     width: var(--container-width-lg);
     max-width: 1800px;
@@ -433,20 +434,32 @@ input, textarea, select {
 .form__section small a{
     color: rgb(104, 3, 104);
 }
-</style>
-
+    </style>
+    <!-----iconscout--->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!----------------------google fonts------------->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
+
         <div class="container nav__container">
             <a href="index.html" class="nav__logo">GTS WEBSITE</a>
             <ul class="nav__items">
                 <li><a href="about.html">About</a></li>
                 <li><a href="help.html">Help</a></li>
-                <li><a href="login.html">login</a></li>     
+                <li><a href="login.html">login</a></li>
+                <li class="nav__profile">
+                    <div class ="avatar">
+                        <img src="./images/avatar.jpg"> 
+                    </div>                   
+                    <ul>
+                        <li><a href="logout.html">Logout</a></li>
+                    </ul>
+                </li>
+                    
             </ul>
+
             <button id="open__nav-btn"><i class="uil uil-bars"></i></button>
             <button id="close__nav-btn"><i class="uil uil-multiply"></i></button>
         </div>
@@ -455,32 +468,65 @@ input, textarea, select {
     <!--------------------------END OF NAV----------------------->
 
     <section class="search__bar">
-        <form class="container search__bar-container" action="">
+        <form class="container search__bar-container">
             <div>
                 <h4>Search by GSTIN</h4>
             </div>
             <div>
                 <i class="uil uil-search"></i>
-                <label for="gstin">Enter GSTIN:</label>
                 <input type="text" id="gstin" name="gstin">
-            </div>
-            <button type="submit" class="btn" onclick="search()">Search</button> 
+                <button id="submit" onclick="get()">Submit</button> 
+        </div>
         </form>
     </section>
-    <script>
-  async function search() {
-        const id = document.getElementById('gstin').value;
-  const endpoint = '/data-api/rest/User/username';
-  const response = await fetch(`${endpoint}/${id}`);
-  const data = await response.json();
-  console.table(data.value);
-}
-    </script>
 <!--------------------------END OF search----------------------->
 
+<script>
+    async function get() {
+    const user = document.getElementById('gstin').value;
+    const endpoint = '/data-api/rest/User/username';
+    const response = await fetch(`${endpoint}/${user}`);
+    const data = await response.json();
+    console.table(data.value);
+  }
+</script>
 
 <footer>
-    
+    <div class="footer__socials">
+        <a href="https://www.youtube.com/@GoodsandServicesTaxNetwork"target="_blank"><i class="uil uil-youtube"></i></a>
+    <a href="https://facebook.com"target="_blank"><i class="uil uil-facebook"></i></a>
+    <a href="https://linkedin.com"target="_blank"><i class="uil uil-linkedin"></i></a>
+    <a href="https://twitter.com"target="_blank"><i class="uil uil-twitter"></i></a>
+    </div>
+    <div class="footer__container">
+        <article>
+            <h4>About GST</h4>
+            <ul>
+                <li><a href="">GST History</a></li>
+            </ul>
+        </article>
+        <article>
+            <h4>Contact Us</h4>
+            <ul>
+                <li><a href="">Help desk No.</a></li>
+                <li><a href="">Email</a></li>
+            </ul>
+        </article>
+        <article>
+            <h4>Related Sites</h4>
+            <ul>
+                <li><a href="">--------</a></li>
+            </ul>
+        </article>
+        <article>
+            <h4>Website policies</h4>
+            <ul>
+                <li><a href="">Policy</a></li>
+                <li><a href="">Terms and Conditions</a></li>
+                <li><a href="">Disclaimer</a></li>
+            </ul>
+        </article>
+    </div>
 </footer>
 
 
