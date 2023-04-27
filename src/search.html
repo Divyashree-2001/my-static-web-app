@@ -450,9 +450,9 @@ input, textarea, select {
                 <li><a href="help.html">Help</a></li>
                 <li><a href="login.html">login</a></li>
                 <li class="nav__profile">
-                <!--<div class ="avatar">
+                  <!--  <div class ="avatar">
                         <img src="./images/avatar.jpg"> 
-                    </div>-->                
+                    </div> -->                  
                     <ul>
                         <li><a href="logout.html">Logout</a></li>
                     </ul>
@@ -466,19 +466,14 @@ input, textarea, select {
 
     </nav>
     <!--------------------------END OF NAV----------------------->
-
     <section class="search__bar">
-        <form class="container search__bar-container">
-            <div>
+            <div class="container nav__container">
                 <h4>Search by GSTIN</h4>
-            </div>
-            <div>
-                <i class="uil uil-search"></i>
                 <input type="text" id="gstin" name="gstin">
-                <button id="submit" onclick="get()">Submit</button> 
-        </div>
-        </form>
+                <button id="get" onclick="get()">Get</button>
+            </div>
     </section>
+    
 <!--------------------------END OF search----------------------->
 
 <script>
