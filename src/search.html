@@ -479,29 +479,43 @@ input, textarea, select {
 <!--------------------------END OF search----------------------->
 
 <script>
-        async function get() {
+  async function get() {
   const user = document.getElementById('gstin').value;
   const endpoint = '/data-api/rest/User/username';
   const response = await fetch(`${endpoint}/${user}`);
   const data = await response.json();
   console.table(data.value);
-  // Check if container exists before using it
-  const container = document.getElementById('data');
-  if (container) {
-    container.innerHTML = ' ';
-  
-    // create table
-    const table = document.createElement('table');
-    table.innerHTML = `<tr><th>GSTIN No</th><th>Password</th></tr>`;
-
-    // loop through data
-    data.value.forEach((item) => {
-      const row = table.insertRow();
-      row.innerHTML = `<td>${item.username}</td><td>${item.password}</td>`;
-    });
-
-    container.appendChild(table);
+  const table = createTable(data);
+  document.getElementById('table-container').appendChild(table);
   }
+      function createTable(data) {
+  const table = document.createElement('table');
+  const thead = document.createElement('thead');
+  const tbody = document.createElement('tbody');
+
+  // create table head row
+  const headRow = document.createElement('tr');
+  for (const property in data[0]) {
+    const th = document.createElement('th');
+    th.innerText = property;
+    headRow.appendChild(th);
+  }
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  // create table body rows
+  for (const obj of data) {
+    const row = document.createElement('tr');
+    for (const property in obj) {
+      const cell = document.createElement('td');
+      cell.innerText = obj[property];
+      row.appendChild(cell);
+    }
+    tbody.appendChild(row);
+  }
+  table.appendChild(tbody);
+
+  return table;
 }
     </script>
 
