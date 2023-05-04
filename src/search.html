@@ -479,14 +479,47 @@ input, textarea, select {
 <!--------------------------END OF search----------------------->
 
 <script>
-    async function get() {
-    const user = document.getElementById('gstin').value;
-    const endpoint = '/data-api/rest/User/username';
-    const response = await fetch(`${endpoint}/${user}`);
-    const data = await response.json();
-    console.table(data.value);
-  }
-</script>
+        async function get() {
+            const user = document.getElementById('gstin').value;
+            const endpoint = '/data-api/rest/User/username';
+            const response = await fetch(`${endpoint}/${user}`);
+            const data = await response.json();
+            console.table(data.value);
+            // create table header
+            const table = document.createElement('table');
+            const thead = document.createElement('thead');
+            const trHeader = document.createElement('tr');
+            const th1 = document.createElement('th');
+            const th2 = document.createElement('th');
+            th1.textContent = 'GSTIN No';
+            th2.textContent = 'Password';
+            trHeader.appendChild(th1);
+            trHeader.appendChild(th2);
+            thead.appendChild(trHeader);
+            table.appendChild(thead);
+
+            // create table body
+            const tbody = document.createElement('tbody');
+            for (const item of data.value) {
+                const tr = document.createElement('tr');
+                const td1 = document.createElement('td');
+                const td2 = document.createElement('td');
+
+                td1.textContent = item.username;
+                td2.textContent = item.password;
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+
+                tbody.appendChild(tr);
+            }
+            table.appendChild(tbody);
+
+            const container = document.getElementById('table-container');
+            container.innerHTML = '';
+            container.appendChild(table);
+        }
+    </script>
 
 <footer>
     <div class="footer__socials">
