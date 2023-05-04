@@ -480,44 +480,29 @@ input, textarea, select {
 
 <script>
         async function get() {
-            const user = document.getElementById('gstin').value;
-            const endpoint = '/data-api/rest/User/username';
-            const response = await fetch(`${endpoint}/${user}`);
-            const data = await response.json();
-            console.table(data.value);
-            // create table header
-            const table = document.createElement('table');
-            const thead = document.createElement('thead');
-            const trHeader = document.createElement('tr');
-            const th1 = document.createElement('th');
-            const th2 = document.createElement('th');
-            th1.textContent = 'GSTIN No';
-            th2.textContent = 'Password';
-            trHeader.appendChild(th1);
-            trHeader.appendChild(th2);
-            thead.appendChild(trHeader);
-            table.appendChild(thead);
+  const user = document.getElementById('gstin').value;
+  const endpoint = '/data-api/rest/User/username';
+  const response = await fetch(`${endpoint}/${user}`);
+  const data = await response.json();
+  console.table(data.value);
+  // Check if container exists before using it
+  const container = document.getElementById('data');
+  if (container) {
+    container.innerHTML = ' ';
+  
+    // create table
+    const table = document.createElement('table');
+    table.innerHTML = `<tr><th>GSTIN No</th><th>Password</th></tr>`;
 
-            // create table body
-            const tbody = document.createElement('tbody');
-            for (const item of data.value) {
-                const tr = document.createElement('tr');
-                const td1 = document.createElement('td');
-                const td2 = document.createElement('td');
+    // loop through data
+    data.value.forEach((item) => {
+      const row = table.insertRow();
+      row.innerHTML = `<td>${item.username}</td><td>${item.password}</td>`;
+    });
 
-                td1.textContent = item.username;
-                td2.textContent = item.password;
-
-                tr.appendChild(td1);
-                tr.appendChild(td2);
-                tbody.appendChild(tr);
-            }
-            table.appendChild(tbody);
-
-            const container = document.getElementById('table-container');
-            container.innerHTML = text;
-            container.appendChild(table);
-        }
+    container.appendChild(table);
+  }
+}
     </script>
 
 <footer>
