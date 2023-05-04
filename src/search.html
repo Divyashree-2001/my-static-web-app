@@ -480,44 +480,25 @@ input, textarea, select {
 
 <script>
   async function get() {
-  const user = document.getElementById('gstin').value;
-  const endpoint = '/data-api/rest/User/username';
-  const response = await fetch(`${endpoint}/${user}`);
-  const data = await response.json();
-  console.table(data.value);
-  const table = createTable(data);
-  document.getElementById('table-container').appendChild(table);
-  }
-      function createTable(data) {
-  const table = document.createElement('table');
-  const thead = document.createElement('thead');
-  const tbody = document.createElement('tbody');
-
-  // create table head row
-  const headRow = document.createElement('tr');
-  for (const property in data[0]) {
-    const th = document.createElement('th');
-    th.innerText = property;
-    headRow.appendChild(th);
-  }
-  thead.appendChild(headRow);
-  table.appendChild(thead);
-
-  // create table body rows
-  for (const obj of data) {
-    const row = document.createElement('tr');
-    for (const property in obj) {
-      const cell = document.createElement('td');
-      cell.innerText = obj[property];
-      row.appendChild(cell);
+    const user = document.getElementById('gstin').value;
+    const endpoint = '/data-api/rest/User/username';
+    const response = await fetch(`${endpoint}/${user}`);
+    const data = await response.json();                                                                                                                         
+    console.table(data.value);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+    let html = '<table border="1|0">';  // Initialize the HTML table with border attribute
+    html += '<tr><th>Username</th><th>Password</th></tr>';  // Create the header row of the table
+    for (let i = 0; i < data.value.length; i++) {  // Iterate over each object in the JSON array
+      html += '<tr>';  // Create a new table row
+      html += '<td>' + data.value[i].username + '</td>';  // Add the username value to the table cell
+      html += '<td>' + data.value[i].password + '</td>';  // Add the password value to the table cell
+      html += '</tr>';  // Close the table row
     }
-    tbody.appendChild(row);
+    html += '</table>';  // Close the HTML table
+    document.getElementById('table').innerHTML = html;  // Set the innerHTML of the element with id 'table'
   }
-  table.appendChild(tbody);
+</script>
 
-  return table;
-}
-    </script>
+<div id="table"></div> <!-- Create a div with an id of 'table' to hold the HTML table -->
 
 <footer>
     <div class="footer__socials">
