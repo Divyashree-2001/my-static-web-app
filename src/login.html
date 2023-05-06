@@ -469,7 +469,7 @@ input, textarea, select {
         const password = document.getElementById('password').value;
         const endpoint = `/data-api/rest/Gst/username`;
         const response = await fetch(`${endpoint}/${username}`);
-        console.table(data.value);  
+        console.table(response.value);  
         if (response.ok) {
           window.location.href = '/display.html'; // Redirect to dashboard page
         } else {
