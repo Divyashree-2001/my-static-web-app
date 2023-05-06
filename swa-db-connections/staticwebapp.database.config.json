@@ -37,6 +37,15 @@
           "role": "anonymous"
         }
       ]
-    } 
+    }
+    "Gst": {
+      "source": "dbo.gsttable",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
   }
 }
