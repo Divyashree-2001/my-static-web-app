@@ -37,7 +37,7 @@
           "role": "anonymous"
         }
       ]
-    }
+    },
     "Gst": {
       "source": "dbo.users",
       "permissions": [
