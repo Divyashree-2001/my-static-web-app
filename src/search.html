@@ -510,9 +510,9 @@ tbody tr:last-of-type {
 
 <script>
   async function get() {
-    const user = document.getElementById('gstin').value;
-    const endpoint = '/data-api/rest/User/username';
-    const response = await fetch(`${endpoint}/${user}`);
+    
+    const endpoint = '/data-api/rest/User/slno';
+    const response = await fetch(endpoint);
     const data = await response.json();
     
     // Get the table element by ID
