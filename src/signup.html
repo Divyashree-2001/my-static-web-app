@@ -455,12 +455,62 @@ input, textarea, select {
             <input type="text" placeholder="Provisional ID/ GSTIN">
             <input type="password" placeholder="Create Password">
             <input type="password" placeholder="Confirm Password">
-            <button type="submit" class="btn">Sign Up</button>
+            <button type="submit" >Sign Up</button>
             <small>Already created username and password? <a href="login.html">Sign In</a></small>
         </form>
     </div>
 </section>
-    
+<script>
+    const form = document.getElementById('login-form');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+
+  // Validate input
+  if (username.length < 6 || password.length < 8) {
+    // Display an error message and return
+    const errorDiv = document.getElementById('error');
+    errorDiv.innerText = 'Username must be at least 6 characters long and password must be at least 8 characters long.';
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    // Display an error message and return
+    const errorDiv = document.getElementById('error');
+    errorDiv.innerText = 'Passwords do not match.';
+    return;
+  }
+
+  // Make an API request to create the user
+  try {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username, password })
+    });
+
+    if (!response.ok) {
+      // Display an error message and return
+      const errorDiv = document.getElementById('error');
+      errorDiv.innerText = 'An error occurred while creating the user.';
+      return;
+    }
+
+    // Redirect to the login page
+    window.location.href = '/login.html';
+  } catch (error) {
+    // Display an error message and return
+    const errorDiv = document.getElementById('error');
+    errorDiv.innerText = 'An error occurred while creating the user.';
+    console.error(error);
+    return;
+  }
+}
+    </script>   
     
     <footer> </footer>
 
