@@ -503,7 +503,7 @@ tbody tr:last-of-type {
             <div class="container search__bar-container">
                 <i class="uil uil-search"></i>
                 <input type="text" id="gstin" name="gstin">
-                <button id="get" class="btn" onclick="get()">Submit</button> 
+                <button id="get" onclick="get()">Submit</button> 
         </div>
     </section>
 <!--------------------------END OF search----------------------->
@@ -511,7 +511,7 @@ tbody tr:last-of-type {
 <script>
   async function get() {
     
-    const endpoint = '/data-api/rest/User/slno';
+    const endpoint = '/data-api/rest/User';
     const response = await fetch(endpoint);
     const data = await response.json();
     console.table(data.value);
