@@ -30,7 +30,7 @@
   },
   "entities": {
     "User": {
-      "source": "dbo.users",
+      "source": "dbo.gsttable",
       "permissions": [
         {
           "actions": ["*"],
