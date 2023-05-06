@@ -451,10 +451,10 @@ input, textarea, select {
     <div class="container from__section-container">
         <h2>Sign Up</h2>
         
-        <form action="" enctype="multipart/form-data">
-            <input type="text" placeholder="Provisional ID/ GSTIN">
-            <input type="password" placeholder="Create Password">
-            <input type="password" placeholder="Confirm Password">
+        <form id="login-form" enctype="multipart/form-data">
+            <input type="text" id="username" placeholder="Provisional ID/ GSTIN">
+            <input type="password" id="password" placeholder="Create Password">
+            <input type="password" id="confirm-password" placeholder="Confirm Password">
             <button type="submit" >Sign Up</button>
             <small>Already created username and password? <a href="login.html">Sign In</a></small>
         </form>
@@ -469,10 +469,10 @@ form.addEventListener('submit', async (event) => {
   const confirmPassword = document.getElementById('confirm-password').value;
 
   // Validate input
-  if (username.length < 6 || password.length < 8) {
+  if (username.length < 15 || password.length < 8) {
     // Display an error message and return
     const errorDiv = document.getElementById('error');
-    errorDiv.innerText = 'Username must be at least 6 characters long and password must be at least 8 characters long.';
+    errorDiv.innerText = 'Username must be 15 characters long and password must be  8 characters long.';
     return;
   }
 
@@ -485,7 +485,7 @@ form.addEventListener('submit', async (event) => {
 
   // Make an API request to create the user
   try {
-    const response = await fetch('/api/users', {
+    const response = await fetch('/data-api/rest/Gst', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
