@@ -526,11 +526,26 @@ tbody tr:last-of-type {
     
     // Create a new table header cell for the "username" field
     const usernameHeader = headerRow.insertCell();
-    usernameHeader.innerHTML = '<b>Username</b>';
+    usernameHeader.innerHTML = '<b>GSTIN No</b>';
     
     // Create a new table header cell for the "password" field
-    const passwordHeader = headerRow.insertCell();
-    passwordHeader.innerHTML = '<b>Password</b>';
+    const invoiceHeader = headerRow.insertCell();
+    invoiceHeader.innerHTML = '<b>Invoice No</b>';
+    
+      
+    // Create a new table header cell for the "HSN" field
+    const hsnHeader = headerRow.insertCell();
+    hsnHeader.innerHTML = '<b>HSN code</b>';
+    
+      
+    // Create a new table header cell for the "product code" field
+    const productcodeHeader = headerRow.insertCell();
+    productcodeHeader.innerHTML = '<b>Product code</b>';
+    
+      
+    // Create a new table header cell for the "GST" field
+    const gstHeader = headerRow.insertCell();
+    gstHeader.innerHTML = '<b>GST Amount</b>';
     
     // Loop through each user object in the data array
     for (let user of data.value) {
@@ -542,8 +557,20 @@ tbody tr:last-of-type {
       usernameCell.innerHTML = user.username;
       
       // Create a new cell for the "password" field and add the password value to it
-      const passwordCell = row.insertCell();
-      passwordCell.innerHTML = user.password;
+      const invoiceCell = row.insertCell();
+      invoiceCell.innerHTML = user.invoice;
+        
+        // Create a new cell for the "HSN" field and add the password value to it
+      const hsnCell = row.insertCell();
+      hsnCell.innerHTML = user.hsncode;
+        
+        // Create a new cell for the "product code" field and add the password value to it
+      const productcodeCell = row.insertCell();
+      productcodeCell.innerHTML = user.productcode;
+        
+        // Create a new cell for the "GST amount" field and add the password value to it
+      const gstCell = row.insertCell();
+      gstCell.innerHTML = user.amount;
     }
   }
 </script>
