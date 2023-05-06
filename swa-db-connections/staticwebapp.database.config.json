@@ -38,6 +38,8 @@
         }
       ]
     }
+  } 
+  "entities": {
     "Gst": {
       "source": "dbo.gsttable",
       "permissions": [
