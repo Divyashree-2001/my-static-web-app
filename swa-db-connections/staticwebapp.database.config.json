@@ -38,5 +38,14 @@
         }
       ]
     }
+    "Gst": {
+      "source": "dbo.users",
+      "permissions": [
+        {
+          "actions": ["*"],
+          "role": "anonymous"
+        }
+      ]
+    }
   }
 }
