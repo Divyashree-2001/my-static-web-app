@@ -38,16 +38,5 @@
         }
       ]
     }
-  },
-  "entities": {
-    "Gst": {
-      "source": "dbo.gsttable",
-      "permissions": [
-        {
-          "actions": ["*"],
-          "role": "anonymous"
-        }
-      ]
-    }
   }
 }
