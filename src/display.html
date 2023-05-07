@@ -448,6 +448,87 @@ input, textarea, select {
                 </div>
 
     </nav>
+    <section class="search__bar">
+            <div class="container search__bar-container">
+                <h4>Enter the GSTIN No:</h4>
+            </div>
+            <div class="container search__bar-container">
+                <i class="uil uil-search"></i>
+                <input type="text" id="gstin" name="gstin">
+                <button id="get" type="submit" class="btn" onclick="get()">Submit</button> 
+        </div>
+    </section>
+<!--------------------------END OF search----------------------->
+
+<script>
+  async function get() {
+    
+    const endpoint = '/data-api/rest/User';
+    const response = await fetch(endpoint);
+    const data = await response.json();
+    console.table(data.value);
+    
+    // Get the table element by ID
+    const table = document.getElementById('userTable');
+    
+    // Clear any existing rows from the table
+    table.innerHTML = '';
+    
+    // Create a new row for the table header
+    const headerRow = table.insertRow();
+    
+    // Create a new table header cell for the "username" field
+    const usernameHeader = headerRow.insertCell();
+    usernameHeader.innerHTML = '<b>GSTIN No</b>';
+    
+    // Create a new table header cell for the "password" field
+    const invoiceHeader = headerRow.insertCell();
+    invoiceHeader.innerHTML = '<b>Invoice No</b>';
+    
+      
+    // Create a new table header cell for the "HSN" field
+    const hsnHeader = headerRow.insertCell();
+    hsnHeader.innerHTML = '<b>HSN code</b>';
+    
+      
+    // Create a new table header cell for the "product code" field
+    const productcodeHeader = headerRow.insertCell();
+    productcodeHeader.innerHTML = '<b>Product code</b>';
+    
+      
+    // Create a new table header cell for the "GST" field
+    const gstHeader = headerRow.insertCell();
+    gstHeader.innerHTML = '<b>GST Amount</b>';
+    
+    // Loop through each user object in the data array
+    for (let user of data.value) {
+      // Create a new row for the user data
+      const row = table.insertRow();
+      
+      // Create a new cell for the "username" field and add the username value to it
+      const usernameCell = row.insertCell();
+      usernameCell.innerHTML = user.username;
+      
+      // Create a new cell for the "password" field and add the password value to it
+      const invoiceCell = row.insertCell();
+      invoiceCell.innerHTML = user.invoice;
+        
+        // Create a new cell for the "HSN" field and add the password value to it
+      const hsnCell = row.insertCell();
+      hsnCell.innerHTML = user.hsncode;
+        
+        // Create a new cell for the "product code" field and add the password value to it
+      const productcodeCell = row.insertCell();
+      productcodeCell.innerHTML = user.productcode;
+        
+        // Create a new cell for the "GST amount" field and add the password value to it
+      const gstCell = row.insertCell();
+      gstCell.innerHTML = user.amount;
+    }
+  }
+</script>
+
+<table id="userTable"></table>
 <footer></footer>
 </body>
 </html>
