@@ -495,6 +495,7 @@ tbody tr:last-of-type {
             <div class="container search__bar-container">
                 <i class="uil uil-search"></i>
                 <input type="text" id="gstin" name="gstin">
+                <input type="text" id="invoice" name="invoice">
                 <button id="get" type="submit" class="btn" onclick="get()">Submit</button> 
         </div>
     </section>
@@ -507,6 +508,8 @@ tbody tr:last-of-type {
     const data = await response.json();
     console.table(data.value);
     
+    const gstin = document.getElementById('gstin');
+    const invoice = document.getElementById('invoice');
     // Get the table element by ID
     const table = document.getElementById('userTable');
     
@@ -542,7 +545,9 @@ tbody tr:last-of-type {
     // Loop through each user object in the data array
     for (let user of data.value) {
       // Create a new row for the user data
-      const row = table.insertRow();
+        
+      if (user.username == gstin and user.invoice == invoice) {
+          const row = table.insertRow();
       
       // Create a new cell for the "username" field and add the username value to it
       const usernameCell = row.insertCell();
@@ -563,6 +568,9 @@ tbody tr:last-of-type {
         // Create a new cell for the "GST amount" field and add the password value to it
       const gstCell = row.insertCell();
       gstCell.innerHTML = user.amount;
+        } else {
+          alert('GSTIN not found. Please check again.'); // Show error message
+        } 
     }
   }
 </script>
