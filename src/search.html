@@ -243,7 +243,7 @@ feaured
 search
 =================================================
 */
-search__bar {
+.search__bar {
     margin-top: 15rem;
     margin-bottom: 12rem;
 }
@@ -487,16 +487,18 @@ tbody tr:last-of-type {
 
     </nav>
     <!--------------------------END OF NAV----------------------->
-    <section class="search__bar">
+<section class="search__bar">
             <div class="container search__bar-container">
                 <h4>Search by GSTIN</h4>
             </div>
             <div class="container search__bar-container">
             <i class="uil uil-search">
             <input type="text" id="gstin" name="gstin"  placeholder="GSTIN No">
+			</i>
+           </div>
+           <div class="container search__bar-container">
             <input type="text" id="invoice" name="invoice" placeholder="Invoice No">
             <button id="get" type="submit" class="btn" onclick="get()">Submit</button> 
-            </i>
            </div>
     </section>
 <!--------------------------END OF search----------------------->
