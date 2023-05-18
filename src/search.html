@@ -243,34 +243,36 @@ feaured
 search
 =================================================
 */
-.search__bar {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-  }
+search__bar {
+    margin-top: 15rem;
+    margin-bottom: 12rem;
+}
 
-  .search__bar-container {
+.search__bar-container {
+    position: relative;
+    width: 20rem;
+    background: var(--color-gray-900);
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
+    justify-content: space-between;
+    overflow: hidden;
+    padding: 0.6rem 1rem;
+    border-radius: var(--card-border-radius-2);
+    color: var(--color-gray-300);
+}
 
-  .search__bar-container input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-  }
+.search__bar-container > div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
 
-  .search__bar-container button {
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+.search___bar input {
+    background: transparent;
+    margin-bottom: 0.7rem;
+    padding: 0.5rem 0;
+    width: 100%;
+}
 /*===================================================
 button styles=================================================
 */
@@ -491,10 +493,10 @@ tbody tr:last-of-type {
             </div>
             <div class="container search__bar-container">
             <i class="uil uil-search">
-            <input type="text" id="gstin" name="gstin"  placeholder="GSTIN No"><br><br>
+            <input type="text" id="gstin" name="gstin"  placeholder="GSTIN No">
             <input type="text" id="invoice" name="invoice" placeholder="Invoice No">
-            </i>
             <button id="get" type="submit" class="btn" onclick="get()">Submit</button> 
+            </i>
            </div>
     </section>
 <!--------------------------END OF search----------------------->
