@@ -493,13 +493,12 @@ tbody tr:last-of-type {
                 <h4>Search by GSTIN</h4>
             </div>
             <div class="container search__bar-container">
-                <i class="uil uil-search"></i>
-                <label for="gstin">GSTIN No:</label>
-                <input type="text" id="gstin" name="gstin"><br><br>
-                <label for="invoice">Invoice No:</label>
-                <input type="text" id="invoice" name="invoice"><br><br>
-                <button id="get" type="submit" class="btn" onclick="get()">Submit</button> 
-        </div>
+            <i class="uil uil-search">
+            <input type="text" id="gstin" name="gstin"  placeholder="GSTIN No">
+            <input type="text" id="invoice" name="invoice" placeholder="Invoice No">
+            </i>
+            <button id="get" type="submit" class="btn" onclick="get()">Submit</button> 
+           </div>
     </section>
 <!--------------------------END OF search----------------------->
 
@@ -548,7 +547,7 @@ tbody tr:last-of-type {
     for (let user of data.value) {
       // Create a new row for the user data
         
-      if (user.username == gstin and user.invoice == invoice) {
+      if (user.username == gstin && user.invoice == invoice) {
           const row = table.insertRow();
       
       // Create a new cell for the "username" field and add the username value to it
