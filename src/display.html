@@ -497,7 +497,7 @@ input, textarea, select {
     const response = await fetch(endpoint);
     const data = await response.json();
     console.table(data.value);
-    
+    const gstin = document.getElementById('gstin').value;
     // Get the table element by ID
     const table = document.getElementById('userTable');
     
@@ -532,28 +532,23 @@ input, textarea, select {
     
     // Loop through each user object in the data array
     for (let user of data.value) {
-      // Create a new row for the user data
-      const row = table.insertRow();
-      
-      // Create a new cell for the "username" field and add the username value to it
-      const usernameCell = row.insertCell();
-      usernameCell.innerHTML = user.username;
-      
-      // Create a new cell for the "password" field and add the password value to it
-      const invoiceCell = row.insertCell();
-      invoiceCell.innerHTML = user.invoice;
-        
-        // Create a new cell for the "HSN" field and add the password value to it
-      const hsnCell = row.insertCell();
-      hsnCell.innerHTML = user.hsncode;
-        
-        // Create a new cell for the "product code" field and add the password value to it
-      const productcodeCell = row.insertCell();
-      productcodeCell.innerHTML = user.productcode;
-        
-        // Create a new cell for the "GST amount" field and add the password value to it
-      const gstCell = row.insertCell();
-      gstCell.innerHTML = user.amount;
+      if (user.username == gstin && user.invoice == invoice) {
+        const row = table.insertRow();
+        const usernameCell = row.insertCell();
+        usernameCell.innerHTML = user.username;
+        const invoiceCell = row.insertCell();
+        invoiceCell.innerHTML = user.invoice;
+        const hsnCell = row.insertCell();
+        hsnCell.innerHTML = user.hsncode;
+        const productcodeCell = row.insertCell();
+        productcodeCell.innerHTML = user.productcode;
+        const gstCell = row.insertCell();
+        gstCell.innerHTML = user.amount;
+      } 
+    }
+
+    if (table.rows.length <= 1) {
+      alert('GSTIN not found. Please enter valid GSTIN.');
     }
   }
 </script>
