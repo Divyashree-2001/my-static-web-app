@@ -532,7 +532,7 @@ input, textarea, select {
     
     // Loop through each user object in the data array
     for (let user of data.value) {
-      if (user.username == gstin && user.invoice == invoice) {
+      if (user.username == gstin) {
         const row = table.insertRow();
         const usernameCell = row.insertCell();
         usernameCell.innerHTML = user.username;
